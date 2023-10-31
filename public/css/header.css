@@ -1,0 +1,48 @@
+
+/* Style for the header container */
+.header {
+    display: flex;
+    flex-wrap:wrap;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Style for the title on the left */
+.title {
+    flex: 1;
+    /* Takes up remaining space */
+    margin-left: 2rem;
+}
+
+/* Style for the navigation bar on the right */
+.navbar {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Style for individual navigation items */
+.navbar li {
+    margin-right: 10px;
+}
+
+/* Style for links in the navigation bar */
+.navbar a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.btn {
+    margin: 0 5px !important;
+}
+
+.input-group {
+    margin: 0rem;
+}
+.input-group-append {
+    margin-bottom: .75rem;
+    
+}
