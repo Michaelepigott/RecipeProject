@@ -1,0 +1,15 @@
+<section class="card">
+  <!-- The contents of the recipe card links to the recipe page using the recipe ID -->
+  <a href="/recipe/{{id}}">
+    <!-- The card contains the recipe name as the card header -->
+    <header>{{name}}</header>
+    <!-- The card contains ingredients -->
+    <p>{{quantity.[0].wholeNumb}} " " {{quantity.[0].fraction}} " " {{ingredients.[0].measurement}} " " {{ingredients.[0].name}}</p>
+    <!-- The card contains instructions -->
+    <p>{{instructions}}</p>
+      <p>By: {{user}}</p>
+    </div>
+  </a>
+</section>
+
+{{!-- See styles to design .card refer to activity 12 in module 14 --}}
