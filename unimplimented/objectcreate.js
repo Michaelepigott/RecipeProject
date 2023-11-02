@@ -23,3 +23,11 @@ buttonEl.addEventListener('click', function(event){
   event.preventDefault();
   addIngredient();  
 });
+
+function recipie(name,tags, ingredients, user, instructions){
+    this.ingredients = ingredients;
+    this.name = name;
+    this.tags = tags;
+    this.instructions = instructions;
+    this.user =  user;
+}
