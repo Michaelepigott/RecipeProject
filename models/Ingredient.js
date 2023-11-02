@@ -21,7 +21,7 @@ Ingredient.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Ingredient',
+    modelName: 'ingredient',
 }
 );
 
