@@ -24,7 +24,7 @@ Recipe.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Recipe',
+    modelName: 'recipe',
   }
 );
 
