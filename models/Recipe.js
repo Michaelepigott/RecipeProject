@@ -24,11 +24,7 @@ Recipe.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-<<<<<<< HEAD
-    modelName: 'Recipe',
-=======
     modelName: 'recipe',
->>>>>>> main
   }
 );
 
