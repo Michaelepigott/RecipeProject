@@ -23,7 +23,7 @@ RecipeIngredient.init(
             type: DataTypes.DECIMAL(6,3),
             allowNull: false
             },
-            measurment: {
+            measurement: {
                 type: DataTypes.STRING,
                 allowNull: false
                 },
