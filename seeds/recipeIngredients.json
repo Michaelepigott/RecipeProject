@@ -1,59 +1,14 @@
 [
     {
-        "quantity": "1"
+        "recipeId": "1",
+        "ingredientId": "1",
+        "quantity": "1",
+        "measurement": "cup"
     },
     {
-        "quantity": "2"
-    },
-    {
-        "quantity": "3"
-    },
-    {
-        "quantity": "4"
-    },
-    {
-        "quantity": "5"
-    },
-    {
-        "quantity": "6"
-    },
-    {
-        "quantity": "7"
-    },
-    {
-        "quantity": "8"
-    },
-    {
-        "quantity": "9"
-    },
-    {
-        "quantity": "10"
-    },
-    {
-        "quantity": "11"
-    },
-    {
-        "quantity": "12"
-    },
-    {
-        "quantity": ".125"
-    },    
-    {
-        "quantity": ".25"
-    },    
-    {
-        "quantity": ".375"
-    },    
-    {
-        "quantity": ".5"
-    },    
-    {
-        "quantity": ".625"
-    },    
-    {
-        "quantity": ".75"
-    },    
-    {
-        "quantity": ".875"
+        "recipeId": "2",
+        "ingredientId": "2",
+        "quantity": "2",
+        "measurement": "tsp"
     }
 ]
