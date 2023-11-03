@@ -1,6 +1,6 @@
 const Recipe = require('./Recipe');
 const Ingredient = require('./Ingredient');
-const RecipeIngredient = require('./recipeIngredient');
+const RecipeIngredient = require('./Rec_Ingred');
 const User = require('./User');
 const UserRecipe = require('./UserRecipe');
 
