@@ -27,48 +27,56 @@ router.post('/', async (req, res) => {
   });
 
   // Updates recipe by Id
-router.put('/:recipeId', (req, res) => {
-    // Calls the update method on the Recipe model
-    RecipeIngredient.update(
-      {
-        // All the fields you can update and the data attached to the request body.
-        ingredientId: req.body.ingredientId,
-        quantity: req.body.quantity,
-        measurement:req.body.measurement,
-      },
-      {
-        // Gets the recipes based on the id given in the request parameters
-        where: {
-            recipeId: req.params.recipeId,
-        },
-      }
-    )
-      .then((updatedRecipe) => {
-        // Sends the updated Recipe as a json response
-        res.json(updatedRecipe);
-      })
-      .catch((err) => res.status(500).json("Could not find name to update"));
-  });
+  router.put('/:recipeId/:ingredientId', async (req, res) => {
+    // Extracting IDs for clarity
+    const { recipeId, ingredientId } = req.params;
+    
+    try {
+        // Update a specific RecipeIngredient
+        const [updateCount] = await RecipeIngredient.update(req.body, {
+            where: {
+                recipeId: recipeId,
+                ingredientId: ingredientId
+            }
+        });
+
+        if (updateCount > 0) {
+            // Fetch the updated RecipeIngredient record
+            const updatedRecipeIngredient = await RecipeIngredient.findOne({
+                where: {
+                    recipeId: recipeId,
+                    ingredientId: ingredientId
+                }
+            });
+            res.json(updatedRecipeIngredient);
+        } else {
+            res.status(404).json({ message: 'No matching recipe ingredient found to update' });
+        }
+    } catch (err) {
+        res.status(500).json({ message: "Could not update recipe ingredient", error: err.message });
+    }
+});
+
 
   //delete recipe
-router.delete('/:recipeId', async (req, res) => {
+  router.delete('/:recipeId', async (req, res) => {
     try {
-      const recipeId = await RecipeIngredient.destroy({
-        where: {
-            recipeId: req.params.recipeId
-        },
-      });
-  
-      if (!recipeId) {
-        res.status(404).json({ message: 'No Recipe found with this id!' });
-        return;
-      }
-  
-      res.status(200).json(blogData, + "Recipe has been deleted");
+        const recipeIngredientData = await RecipeIngredient.destroy({
+            where: {
+                recipeId: req.params.recipeId,
+            },
+        });
+
+        if (recipeIngredientData) {
+            res.status(200).json({ message: "Recipe ingredient has been deleted" });
+        } else {
+            res.status(404).json({ message: 'No Recipe ingredient found with this id!' });
+        }
     } catch (err) {
-      res.status(500).json("Could not be deleted");
+        res.status(500).json(err.message);
     }
-  });
+});
+
 
   module.exports = router;
   
