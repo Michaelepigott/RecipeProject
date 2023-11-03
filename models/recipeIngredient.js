@@ -20,17 +20,20 @@ RecipeIngredient.init(
             }
             },
             quantity: {
-            type: DataTypes.STRING,
+            type: DataTypes.DECIMAL(6,3),
             allowNull: false
-            }
-    
+            },
+            measurement: {
+                type: DataTypes.STRING,
+                allowNull: false
+                },
 },
 {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'RecipeIngredient',
+    modelName: 'recipeIngredient',
 }
 );
 
