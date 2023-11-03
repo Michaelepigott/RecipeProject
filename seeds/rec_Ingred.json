@@ -1,14 +1,14 @@
 [
     {
-        "recipeId": "1",
-        "ingredientId": "1",
-        "quantity": "1",
-        "measurement": "cup"
+        "recipeId": 1, 
+        "ingredientId": 1, 
+        "quantity": 2.5,
+        "measurement": "cups"
     },
     {
-        "recipeId": "2",
-        "ingredientId": "2",
-        "quantity": "2",
-        "measurement": "tsp"
+        "recipeId": 1, 
+        "ingredientId": 2, 
+        "quantity": 1.5,
+        "measurement": "teaspoons"
     }
 ]
