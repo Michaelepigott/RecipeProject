@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "seeds": "node seeds/seed.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "seed": "node seeds/seed.js"
@@ -21,7 +22,7 @@
     "express-session": "^1.17.3",
     "fuse.js": "^7.0.0",
     "mysql2": "^3.6.2",
+    "nodemon": "^3.0.1",
     "sequelize": "^6.33.0"
-  },
-  "devDependencies": {}
+  }
 }
