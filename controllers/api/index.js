@@ -1,10 +1,12 @@
 const router = require('express').Router();
-const recipeRoutes = require('./recipeRoutes');
+const recipeRoutes = require('./recipeRoute');
 const ingredientRoutes = require('./ingredientRoutes');
-const ingredientRecipeRoutes = require('./ingredientRecipeRoutes');
+const Rec_IngredRoutes = require('./Rec_IngredRoutes');
+const userRoutes = require('./UserRoutes');
 
 router.use('/recipe', recipeRoutes);
 router.use('/ingredient', ingredientRoutes);
-router.use('/ingredientRecipe', ingredientRecipeRoutes);
+router.use('//Rec_IngredRoutes', Rec_IngredRoutes);
+router.use('//User', userRoutes);
 
 module.exports = router;
