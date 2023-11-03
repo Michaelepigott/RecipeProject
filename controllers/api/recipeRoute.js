@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 // POST create a new recipe
 router.post('/', async (req, res) => {
     try {
-      const recipeData = await User.create(req.body);
+      const recipeData = await Recipe.create(req.body);
       res.status(200).json(recipeData);
     } catch (err) {
       res.status(400).json(err);
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
   });
 
   // Updates recipe
-router.put('/name', (req, res) => {
+router.put('/;id', (req, res) => {
     // Calls the update method on the Recipe model
     Recipe.update(
       {
@@ -46,7 +46,7 @@ router.put('/name', (req, res) => {
         // Sends the updated Recipe as a json response
         res.json(updatedRecipe);
       })
-      .catch((err) => res.status(500).json("Could not find name to update"));
+      .catch((err) => res.status(500).json(err));
   });
 
   //delete recipe
@@ -63,7 +63,7 @@ router.delete('/:id', async (req, res) => {
         return;
       }
   
-      res.status(200).json(blogData, + "Recipe has been deleted");
+      res.status(200).json({message: "Recipe has been deleted"});
     } catch (err) {
       res.status(500).json("Could not be deleted");
     }
