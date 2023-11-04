@@ -5,17 +5,17 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
       // Get all final recipes by a certain user and JOIN with user data
-      const recIngredData = await Rec_Ingred.findAll({
+      const AllrecIngredData = await Rec_Ingred.findAll({
         include: [
           {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
+            model: Rec_Ingred,
+            attributes: ['id']
+          }
+        ]
       });
-  
+
       // Serialize data so the template can read it
-      const rec_Ingreds = recIngredData.map((rec_Ingred) => rec_Ingred.get({ plain: true }));
+      const receiveAll = recIngredData.map((AllrecIngredData) => rec_Ingred.get({ plain: true }));
   
       // Pass serialized data and session flag into template
       res.render('homepage', { 

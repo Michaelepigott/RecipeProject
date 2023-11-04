@@ -4,13 +4,21 @@ const withAuth = require('../../utils/auth');
 
 router.get('/:id', async (req, res) => {
     try {
-        const ingredientData = await Ingredient.findByPk(req.params.id);
+        const ingredientData = await Ingredient.findByPk(req.params.id, {
+            // include: [
+            //     { model: Recipe, attributes: ['id', 'name']}
+            // ]
+        });
+
+        console.log('ingredientData:', ingredientData); // Add this line for debugging
+
         if (!ingredientData) {
             res.status(404).json({ message: 'No Ingredient with this id!' });
             return;
         }
         res.status(200).json(ingredientData);
     } catch (err) {
+        console.log('Error:', err); // Add this line for debugging
         res.status(500).json(err);
     }
 });
