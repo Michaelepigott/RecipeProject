@@ -12,12 +12,23 @@ Recipe.init(
       },
       name: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        validate: {
+          len: [2, 30]
+        }
       },
       instructions: {
         type: DataTypes.TEXT,
         allowNull: false
-      }
+      },
+      user_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'user',
+          key: 'id',
+        },
+      },
   },
   {
     sequelize,

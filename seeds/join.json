@@ -1,13 +1,13 @@
 [
     {
-        "recipeId": "1",
-        "ingredientId": "1",
+        "recipe_id": 1,
+        "ingredient_id": 1,
         "quantity": "1",
         "measurement": "cup"
     },
     {
-        "recipeId": "2",
-        "ingredientId": "2",
+        "recipe_id": 2,
+        "ingredient_id": 2,
         "quantity": "2",
         "measurement": "tsp"
     }
