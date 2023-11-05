@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Chicken Parmesan",
+        "instructions": "Preheat an oven to 450 degrees F (230 degrees C).\n\nPlace chicken breasts between two sheets of heavy plastic (resealable freezer bags work well) on a solid, level surface. Firmly pound chicken with the smooth side of a meat mallet to a thickness of 1/2-inch.\n\nSeason chicken thoroughly with salt and pepper. Using a sifter or strainer; sprinkle flour over chicken breasts, evenly coating both sides\n\nBeat eggs in a shallow bowl and set aside.\n\nMix bread crumbs and 1/2 cup Parmesan cheese in a separate bowl, set aside.\n\nDip a flour-coated chicken breast in beaten eggs. Transfer breast to the bread crumb mixture, pressing crumbs into both sides. Repeat for each breast. Let chicken rest for 10 to 15 minutes.\n\nHeat 1/2 inch olive oil in a large skillet on medium-high heat until it begins to shimmer. Cook chicken in the hot oil until golden, about 2 minutes per side. The chicken will finish cooking in the oven.\n\nTransfer chicken to a baking dish. Top each breast with 2 tablespoons tomato sauce. Layer each chicken breast with equal amounts of mozzarella cheese, fresh basil, and provolone cheese. Sprinkle remaining Parmesan over top and drizzle each with 1/2 teaspoon olive oil.\n\nBake in the preheated oven until cheese is browned and bubbly and chicken breasts are no longer pink in the center, 15 to 20 minutes. An instant-read thermometer inserted into the center should read at least 165 degrees F (74 degrees C).",
+        "user_id": 1
+    },
+    {
+        "name": "sample",
+        "instructions": "firstparagraph\n\nsecondparagraph",
+        "user_id": 2
+    }
+]

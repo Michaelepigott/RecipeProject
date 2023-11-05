@@ -1,23 +1,31 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Rec_Ingred extends Model { }
+class Join extends Model { }
 
-Rec_Ingred.init(
+Join.init(
     {
-        recipeId: {
+        id: {
             type: DataTypes.INTEGER,
-            references: {
-                model: 'recipes',
-                key: 'id'
-            }
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
         },
-        ingredientId: {
+        recipe_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'ingredients',
+                model: 'recipe',
                 key: 'id'
-            }
+            },
+            onDelete: 'CASCADE',
+        },
+        ingredient_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'ingredient',
+                key: 'id'
+            },
+            onDelete: 'CASCADE',
         },
         quantity: {
             type: DataTypes.DECIMAL(6, 3),
@@ -25,7 +33,7 @@ Rec_Ingred.init(
         },
         measurement: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
     },
     {
@@ -33,8 +41,8 @@ Rec_Ingred.init(
         timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'rec_Ingred',
+        modelName: 'join',
     }
 );
 
-module.exports = Rec_Ingred;
+module.exports = Join;
