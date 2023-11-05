@@ -1,14 +1,14 @@
 const router = require('express').Router();
-const { Recipe, Ingredient, Rec_Ingred, User } = require('../models');
+const { Recipe, User, Join, Ingredient} = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
         // Get all recipe ingredients and JOIN with Recipe and Ingredient data
-        const recIngredData = await Rec_Ingred.findAll({
+        const recipeData = await Recipe.findAll({
             include: [
                 {
-                    model: Recipe,
+                    model: Join,
                     attributes: ['id', 'name'],
                     as: 'recipes'
                 },
@@ -21,11 +21,11 @@ router.get('/', async (req, res) => {
         });
 
         // Serialize data so the template can read it
-        const recIngreds = recIngredData.map((recIngred) => recIngred.get({ plain: true }));
+        const final = recipeData.map((recipes) => recipes.get({ plain: true }));
     
         // Pass serialized data and session flag into template
         res.render('homepage', { 
-            recIngreds, 
+            final, 
             logged_in: req.session.logged_in 
         });
     } catch (err) {
