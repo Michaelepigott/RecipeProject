@@ -38,7 +38,7 @@ router.get('/', async (req, res) => {
         ],
       });
   
-      const recipe = recipetData.get({ plain: true });
+      const recipe = recipeData.get({ plain: true });
   
       res.render('recipe', {
         ...recipe,
