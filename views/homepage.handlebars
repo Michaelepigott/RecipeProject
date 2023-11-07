@@ -3,13 +3,23 @@
 
 <div>
     <h1>List of Recipes</h1>
-        {{#each recipes}}
-         <div class="card">
+    {{#each recipes}}
+    <div class="card">
         <h2>{{name}}</h2>
         <h4>By: {{user.user_name}}</h4>
         <h3>Ingredients</h3>
         {{#each ingredients}}
-        <p>{{name}}</p>
+        <p class="ingredient">
+            {{#if join.quantity}}
+            <span class="quantity">{{join.quantity}}</span>
+            {{/if}}
+
+            {{#if join.measurement}}
+            <span class="measurement">{{join.measurement}}</span>
+            {{/if}}
+
+            <span class="name">{{name}}</span>
+        </p>
         {{/each}}
         <h3>Instructions:</h3>
         <p>{{instructions}}</p>
