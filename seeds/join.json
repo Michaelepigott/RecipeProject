@@ -10,5 +10,11 @@
         "ingredient_id": 2,
         "quantity": "2",
         "measurement": "tsp"
+    },
+    {
+        "recipe_id": 1,
+        "ingredient_id": 3,
+        "quantity": "1",
+        "measurement": "tsp"
     }
 ]

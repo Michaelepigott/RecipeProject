@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Recipe Creator</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="../../public/css/reset.css">
-    <link rel="stylesheet" href="../../public/css/header.css">
+            <!-- CSS -->
+    <link rel="stylesheet" href="/css/reset.css">
 
-    <!-- bootleg style -->
+    <!-- bootstrap style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/style.css">
 
 </head>
 
@@ -24,7 +27,7 @@
         <class class="navbar col-md-2 col-lg-6 input-group justify-content-center">
             <!-- other buttons -->
             <div class="input-group-append">
-               <a href="/new">
+               <a href="/newRecipe">
                     <button class="btn btn-secondary rounded-pill px-3" type="button">New</button>
                 </a>
                 <a href="/login">
@@ -32,6 +35,9 @@
                 </a>
                 <a href="/signUp">
                 <button class="btn btn-danger rounded-pill px-3" type="button">Sign Up</button>
+                </a>
+                 <a href="/logOut">
+                <button class="btn btn-info rounded-pill px-3" type="button">Log Out</button>
                 </a>
             </div>
             <!-- search -size of search bar controlled above by col-md-4 -->
@@ -50,8 +56,9 @@
 </body>
 
 
-<!-- Add Bootstrap JS (optional) -->
+<!-- Add Bootstrap JS  -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="./public/js/logic.js"></script>
 </body>
 
 </html>
