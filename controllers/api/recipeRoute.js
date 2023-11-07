@@ -29,6 +29,32 @@ router.get('/', async (req, res) => {
     }
 });
 
+// get one Recipes 
+router.get('/:id', async (req, res) => {
+    try {
+        const recipes = await Recipe.findOne({
+            where: {
+                id: req.params.id },
+            include: [{
+                model: Ingredient,
+                through: {
+                    model: Join,
+                    attributes: ['quantity', 'measurement'], 
+                },
+                as: 'ingredients',
+                attributes: ['name'] 
+            }]
+        });
+        res.json(recipes);
+    } catch (err) {
+        console.error(err); 
+        res.status(500).json({
+            error: err.message,
+            stack: err.stack,
+        });
+    }
+});
+
 // serach for recipe with any name that is 
 router.get('/search', async (req, res) => {
     try {

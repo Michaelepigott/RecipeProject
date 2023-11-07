@@ -1,10 +1,12 @@
 /* CARDS */
 .card {
-    margin: 20px;
-    flex: 0 1 300px;
-    border: 7px double var(--dark);
-    border-radius: 10px;
-    background-color: var(--light);
-    color: var(--dark);
-  }
+    
+  margin: .5rem;
+  width: 50rem;
+  border-radius: 2rem;
+  border: 1.5px solid black;
+  padding: 2rem;
+
+}
+
 
