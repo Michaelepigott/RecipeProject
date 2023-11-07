@@ -9,7 +9,8 @@ router.get('/', async (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['name'],
+            as: 'user',
+            attributes: ['user_name'],
           },
         ],
       });
@@ -27,27 +28,28 @@ router.get('/', async (req, res) => {
     }
   });
   
-  router.get('/recipe/:id', async (req, res) => {
-    try {
-      const recipeData = await Recipe.findByPk(req.params.id, {
-        include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
-      });
+  // router.get('/recipe/:id', async (req, res) => {
+  //   try {
+  //     const recipeData = await Recipe.findByPk(req.params.id, {
+  //       include: [
+  //         {
+  //           model: User,
+  //           as: 'user',
+  //           attributes: ['user_name'],
+  //         },
+  //       ],
+  //     });
   
-      const recipe = recipeData.get({ plain: true });
+  //     const recipe = recipeData.get({ plain: true });
   
-      res.render('recipe', {
-        ...recipe,
-        logged_in: req.session.logged_in
-      });
-    } catch (err) {
-      res.status(500).json(err);
-    }
-  });
+  //     res.render('recipe', {
+  //       ...recipe,
+  //       logged_in: req.session.logged_in
+  //     });
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // });
   
   // Use withAuth middleware to prevent access to route
   router.get('/profile', withAuth, async (req, res) => {
