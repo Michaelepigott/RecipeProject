@@ -9,10 +9,12 @@ router.get('/', async (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['name'],
+            as: 'user',
+            attributes: ['user_name'],
           },
         ],
       });
+
   
       // Serialize data so the template can read it
       const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
@@ -23,28 +25,7 @@ router.get('/', async (req, res) => {
         logged_in: req.session.logged_in 
       });
     } catch (err) {
-      res.status(500).json(err);
-    }
-  });
-  
-  router.get('/recipe/:id', async (req, res) => {
-    try {
-      const recipeData = await Recipe.findByPk(req.params.id, {
-        include: [
-          {
-            model: User,
-            attributes: ['name'],
-          },
-        ],
-      });
-  
-      const recipe = recipeData.get({ plain: true });
-  
-      res.render('recipe', {
-        ...recipe,
-        logged_in: req.session.logged_in
-      });
-    } catch (err) {
+        console.error(err);
       res.status(500).json(err);
     }
   });
@@ -78,6 +59,19 @@ router.get('/', async (req, res) => {
   
     res.render('login');
   });
+
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect them to the profile page
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  // Otherwise, render the signup page
+  res.render('signUp');
+});
+
 
 module.exports = router;
 
