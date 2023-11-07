@@ -1,3 +1,19 @@
-<p>This is the homepage</p>
+<h1>Welcome to my cookbook</h1>
+<p>please log in to </p>
+
+<div>
+    <h1>List of Recipes</h1>
+        {{#each recipe}}
+         <div class="card">
+        <h2>{{recipe.name}}</h2>
+        <h4>By: {{user.name}}</h4>
+        <h3>Ingredients</h3>
+        <p>{{ingredient.name}}</p>
+        <h3>Instructions:</h3>
+        <p>{{recipe.instructions}}</p>
+    </div>
+    {{/each}}
+</div>
+<script src="/js/add_Recipes.js"></script>
 
 
