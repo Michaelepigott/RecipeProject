@@ -83,11 +83,27 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
+router.get('/newRecipe', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['newRecipe'] },
+      include: [{ model: Recipe }],
+    });
+
+    const user = userData.get({ plain: true });
+
+    res.render('newRecipe', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status('you must be logged in').json(err);
+  }
+});
+
 router.get('/signUp', async (req, res) => {
   try {
-
-
-
 
     res.render('signUp') 
   } catch (err) {
