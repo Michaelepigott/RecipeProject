@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
                     attributes: ['quantity', 'measurement'], 
                 },
                 as: 'ingredients',
-                attributes: ['name'] 
+                attributes: ['user_name'] 
             }]
         });
         res.json(recipes);
