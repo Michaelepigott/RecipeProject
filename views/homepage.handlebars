@@ -6,9 +6,11 @@
         {{#each recipes}}
          <div class="card">
         <h2>{{name}}</h2>
-        <h4>By: {{user.name}}</h4>
+        <h4>By: {{user.user_name}}</h4>
         <h3>Ingredients</h3>
-        <p>{{ingredient.name}}</p>
+        {{#each ingredients}}
+        <p>{{name}}</p>
+        {{/each}}
         <h3>Instructions:</h3>
         <p>{{instructions}}</p>
     </div>
