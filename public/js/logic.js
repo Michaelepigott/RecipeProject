@@ -9,6 +9,7 @@ fracinput = document.getElementById("fraction");
 unitinput = document.getElementById("unit");
 ingdisplay = document.getElementById("ingdisplay");
 ingredients = [];
+const recipiePostlink = 'http://localhost:3001/api/recipe/create'
 
 function ingredient(qty,unit, name, fraction){
     this.qty = qty;
@@ -47,8 +48,50 @@ function ingredientsdisplay(){
 
 }
 
+
+function serverPacket(name, instructions, ingredients){
+    this.name = name;
+    this.instructions = instructions;
+    this.ingredients = ingredients;
+}
+
+async function postData(data) {
+    try { 
+        const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), 
+        });
+
+        const result = await response.json();
+        console.log("Success:", result);
+ } catch (error) {
+    console.error("Error:", error);
+ }
+} 
+
+function sendToServer(){  
+     var sendTitle = tiinput.value;
+     var sendingredients = ingredients;
+     var sendinstructions = instinput;
+    
+     var sendpacket = new serverPacket(sendTitle, sendingredients, sendinstructions);
+     postData(sendpacket);
+};
+
+
+
+
 ingbtn.addEventListener('click',function(event){
     event.preventDefault();
     ingredientadd();
+})
+
+
+submitbtn.addEventListener('click',function(event){
+    event.preventDefault();
+    sendToServer();
 })
 
