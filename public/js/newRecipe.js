@@ -9,7 +9,7 @@ fracinput = document.getElementById("fraction");
 unitinput = document.getElementById("unit");
 ingdisplay = document.getElementById("ingdisplay");
 ingredients = [];
-const recipiePostlink = 'http://localhost:3001/api/recipe/create'
+const recipiePostlink = '/api/recipe/create'
 
 function ingredient(qty,unit, name, fraction){
     this.qty = qty;
@@ -57,7 +57,7 @@ function serverPacket(name, instructions, ingredients){
 
 async function postData(data) {
     try { 
-        const response = await fetch(url, {
+        const response = await fetch(recipiePostlink, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
