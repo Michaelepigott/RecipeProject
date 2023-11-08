@@ -13,30 +13,37 @@
                          <!-- qty row -->
                         <input type="text" class="form-control" placeholder="quantity" id="quantity">
                         <!-- fraction/unit row -->
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="fraction">
-                            fraction
-                          </button>
-                          <ul class="dropdown-menu">
-                            <li><a class="1/8" href="#">1/8</a></li>
-                            <li><a class="1/4" href="#">1/4</a></li>
-                            <li><a class="1/3" href="#">1/4</a></li>
-                            <li><a class="1/2" href="#">1/2</a></li>
-                            <li><a class="2/3" href="#">2/3</a></li>
-                          </ul>
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="unit">
-                                Unit
-                                </button>
-                            <ul class="dropdown-menu">
-                            <li><a class="tablespoon" href="#">tbsp</a></li>
-                            <li><a class="teaspoon" href="#">tsp</a></li>
-                            <li><a class="cup" href="#">c</a></li>
-                            <li><a class="ounce" href="#">oz</a></li>
-                            <li><a class="pound" href="#">lb</a></li>
-                            <li><a class="gram" href="#">g</a></li>
-                            <li><a class="kilogram" href="#">kg</a></li>
-                            <li><a class="milliliter" href="#">ml</a></li>
-                            <li><a class="liter" href="#">L</a></li>
-                            </ul>
+                        <div class = "row">
+                            <div class="dropdown">
+                                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="fraction">
+                                    fraction
+                                 </button>
+                                 <ul class="dropdown-menu" aria-labelledby="fraction">
+                                     <li><a class="dropdown-item" href="#">1/8</a></li>
+                                     <li><a class="dropdown-item" href="#">1/4</a></li>
+                                     <li><a class="dropdown-item" href="#">1/4</a></li>
+                                     <li><a class="dropdown-item" href="#">1/2</a></li>
+                                     <li><a class="dropdown-item" href="#">2/3</a></li>
+                                 </ul>
+                            </div>
+                            <div class="dropdown">
+                                 <button class="btn btn-primary dropdown-toggle"  type="button" data-bs-toggle="dropdown" aria-expanded="false" id="unit">
+                                        Unit
+                                 </button>
+                                 <ul class="dropdown-menu" aria-labelledby="unit">
+                                     <li><a class="dropdown-item" href="#">N/A</a></li>
+                                     <li><a class="dropdown-item" href="#">tbsp</a></li>
+                                     <li><a class="dropdown-item" href="#">tsp</a></li>
+                                     <li><a class="dropdown-item" href="#">c</a></li>
+                                     <li><a class="dropdown-item" href="#">oz</a></li>
+                                     <li><a class="dropdown-item" href="#">lb</a></li>
+                                     <li><a class="dropdown-item" href="#">g</a></li>
+                                     <li><a class="dropdown-item" href="#">kg</a></li>
+                                     <li><a class="dropdown-item" href="#">ml</a></li>
+                                     <li><a class="dropdown-item" href="#">L</a></li>
+                                 </ul>
+                            </div>
+                        </div>
                             <!-- ingredient area -->
                         <input type="text" class="form-control" placeholder="Ingredient" id="ingredient">
                         <button type="button" id="ingbutton" class="btn btn-dark">Add</button>
@@ -66,11 +73,13 @@
     </div>
     <!-- submit btn -->
  <button type="button" id="submitbtn" class="btn-lg  btn-dark">Submit</button>
+ 
  </section>
  
  <script src="./js/newRecipe.js"></script>
  <!-- Add Bootstrap JS   fyi jquery script must come before bootstrap script--> 
-
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 
