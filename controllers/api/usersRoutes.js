@@ -51,6 +51,7 @@ router.post('/login', async (req, res) => {
 
 // Logout route for user
 router.post('/logout', (req, res) => {
+    console.log("logging out")
     if (req.session.logged_in) {
         req.session.destroy(() => {
             res.status(204).end();
