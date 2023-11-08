@@ -103,6 +103,19 @@ router.get('/signUp', async (req, res) => {
 
 
 
+
+router.get('/signup', (req, res) => {
+  // If the user is already logged in, redirect them to the profile page
+  if (req.session.logged_in) {
+    res.redirect('/profile');
+    return;
+  }
+
+  // Otherwise, render the signup page
+  res.render('signUp');
+});
+
+
 module.exports = router;
 
 
