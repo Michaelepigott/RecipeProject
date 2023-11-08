@@ -1,4 +1,6 @@
 /* CARDS */
+
+
 .card {
     
   margin: .5rem;
@@ -9,4 +11,6 @@
 
 }
 
-
+.margins {
+  margin: 3rem 3rem;
+}
