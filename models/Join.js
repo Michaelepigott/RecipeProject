@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, Sequelize } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Join extends Model { }
@@ -29,7 +29,7 @@ Join.init(
         },
         quantity: {
             type: DataTypes.DECIMAL(6, 3),
-            allowNull: false
+            allowNull: true,
         },
         measurement: {
             type: DataTypes.STRING,
@@ -44,5 +44,7 @@ Join.init(
         modelName: 'join',
     }
 );
+
+
 
 module.exports = Join;

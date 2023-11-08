@@ -2,13 +2,12 @@
     {
         "recipe_id": 1,
         "ingredient_id": 2,
-        "quantity": "4",
-        "measurement": " "
+        "quantity": "4"
     },
     {
         "recipe_id": 1,
         "ingredient_id": 3,
-        "quantity": " ",
+        "quantity": "4",
         "measurement": " "
     },
     {
@@ -26,10 +25,9 @@
     {
         "recipe_id": 1,
         "ingredient_id": 6,
-        "quantity": "3/4",
-        "measurement": "cup"
+        "quantity": "2",
+        "measurement": "Tbsp"
     },
-
     {
         "recipe_id": 1,
         "ingredient_id": 1,
@@ -82,12 +80,42 @@
         "recipe_id": 2,
         "ingredient_id": 2,
         "quantity": "2",
+        "measurement": "tbsp"
+    },
+    {
+        "recipe_id": 1,
+        "ingredient_id": 7,
+        "quantity": ".5",
         "measurement": "tsp"
     },
     {
         "recipe_id": 1,
-        "ingredient_id": 3,
-        "quantity": "1",
+        "ingredient_id": 8,
+        "quantity": ".5",
+        "measurement": "cup"
+    },
+    {
+        "recipe_id": 1,
+        "ingredient_id": 9,
+        "quantity": ".25",
+        "measurement": "cup"
+    },
+    {
+        "recipe_id": 1,
+        "ingredient_id": 10,
+        "quantity": ".25",
+        "measurement": "cup"
+    },
+    {
+        "recipe_id": 1,
+        "ingredient_id": 11,
+        "quantity": ".5",
+        "measurement": "cup"
+    },
+    {
+        "recipe_id": 2,
+        "ingredient_id": 2,
+        "quantity": "2",
         "measurement": "tsp"
     }
 ]

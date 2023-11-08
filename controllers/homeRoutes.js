@@ -26,9 +26,9 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const recipes = recipeData.map((recipe) => recipe.get({ plain: true }));
-    console.log(recipes)
-    console.log('first recipe')
-    console.log(recipes[0])
+    // console.log(recipes)
+    // console.log('first recipe')
+    // console.log(recipes[0])
     // Pass serialized data and session flag into template
     res.render('homepage', {
       recipes,
@@ -40,31 +40,10 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get('/recipe/:id', async (req, res) => {
-//   try {
-//     const recipeData = await Recipe.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           as: 'user',
-//           attributes: ['user_name'],
-//         },
-//       ],
-//     });
-
-//     const recipe = recipeData.get({ plain: true });
-
-//     res.render('recipe', {
-//       ...recipe,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+//____________________________________________________________________________________
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/newRecipe', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
@@ -74,7 +53,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('profile', {
+    res.render('newRecipe', {
       ...user,
       logged_in: true
     });
@@ -83,17 +62,28 @@ router.get('/profile', withAuth, async (req, res) => {
   }
 });
 
-router.get('/newRecipe', withAuth, async (req, res) => {
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
+  if (req.session.logged_in) {
+    res.redirect('/newRecipe');
+    return;
+  }
+
+  res.render('login');
+});
+//_______________________________________________________________________________
+
+router.get('/new', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['newRecipe'] },
+      attributes: { exclude: ['password'] },
       include: [{ model: Recipe }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('newRecipe', {
+    res.render('new', {
       ...user,
       logged_in: true
     });
@@ -111,15 +101,7 @@ router.get('/signUp', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/profile');
-    return;
-  }
 
-  res.render('login');
-});
 
 
 router.get('/signup', (req, res) => {
