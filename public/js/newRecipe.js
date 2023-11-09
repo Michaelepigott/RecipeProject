@@ -111,8 +111,6 @@ $(function () {
 
         // Update the button's text with the selected text
         $('#unit').text(selectedText);
-        $(function () {
-            $('[data-bs-toggle="dropdown"]').dropdown();
-        });
+       
     });
 });
