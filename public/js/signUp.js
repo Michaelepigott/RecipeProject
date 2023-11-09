@@ -1,26 +1,30 @@
 
 const signupFormHandler = async (event) => {
-    event.preventDefault();
-  
-    const user_name = document.querySelector('#username').value.trim();
-    const password = document.querySelector('#password').value.trim();
-  
-    if (user_name  && password) {
+  event.preventDefault();
+
+  const user_name = document.querySelector('#username-signup').value.trim();
+  const password = document.querySelector('#password-signup').value.trim();
+
+  if (user_name && password) {
       const response = await fetch('/api/users', {
-        method: 'POST',
-        body: JSON.stringify({ user_name, password }),
-        headers: { 'Content-Type': 'application/json' },
+          method: 'POST',
+          body: JSON.stringify({ user_name, password }),
+          headers: { 'Content-Type': 'application/json' },
       });
-  console.log("here2")
+
       if (response.ok) {
-        document.location.replace('/newRecipe');
+          document.location.replace('/profile');
       } else {
-        alert(response.statusText);
+          const data = await response.json();
+          const errorContainer = document.querySelector('#signup-error-message');
+          if (errorContainer) {
+              errorContainer.textContent = data.message;
+              errorContainer.style.display = 'block';
+          }
       }
-    }
-  };
+  }
+};
 
-
-  document
+document
   .querySelector('.signup-form')
   .addEventListener('submit', signupFormHandler);
