@@ -95,3 +95,22 @@ submitbtn.addEventListener('click',function(event){
     sendToServer();
 })
 
+$(function () {
+    $('[data-bs-toggle="dropdown"]').dropdown();
+});
+
+$(function () {
+    // Add a click event handler to all dropdown items
+   // **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
+    $('.dropdown-item').on('click', function (event) {
+        // Prevent the default behavior of the anchor tag
+        event.preventDefault();
+
+        // Get the text of the clicked item
+        var selectedText = $(this).text();
+
+        // Update the button's text with the selected text
+        $('#unit').text(selectedText);
+       
+    });
+});
