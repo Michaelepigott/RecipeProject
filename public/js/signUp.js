@@ -2,16 +2,16 @@
 const signupFormHandler = async (event) => {
     event.preventDefault();
   
-    const name = document.querySelector('#name-signup').value.trim();
-    const password = document.querySelector('#password-signup').value.trim();
+    const user_name = document.querySelector('#username').value.trim();
+    const password = document.querySelector('#password').value.trim();
   
-    if (name  && password) {
+    if (user_name  && password) {
       const response = await fetch('/api/users', {
         method: 'POST',
-        body: JSON.stringify({ name, password }),
+        body: JSON.stringify({ user_name, password }),
         headers: { 'Content-Type': 'application/json' },
       });
-  
+  console.log("here2")
       if (response.ok) {
         document.location.replace('/newRecipe');
       } else {
@@ -19,6 +19,7 @@ const signupFormHandler = async (event) => {
       }
     }
   };
+
 
   document
   .querySelector('.signup-form')
