@@ -273,7 +273,7 @@ router.put('/update', async (req, res) => {
     }
 });
 
-router.delete('/:name', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     // Check if the user is logged in
     if (!req.session.logged_in) {
         return res.status(401).json({ message: "Please log in to delete a recipe" });
@@ -282,13 +282,13 @@ router.delete('/:name', async (req, res) => {
     const t = await sequelize.transaction();
 
     try {
-        // Extract the name from request parameters
-        const { name } = req.params;
+        // Extract the id from request parameters
+        const { id } = req.params;
 
-        // Find the recipe by name and user_id to ensure the user owns the recipe
+        // Find the recipe by id and user_id to ensure the user owns the recipe
         const recipe = await Recipe.findOne({
             where: {
-                name,
+                id,
                 user_id: req.session.user_id
             }
         }, { transaction: t });
@@ -309,10 +309,9 @@ router.delete('/:name', async (req, res) => {
     } catch (error) {
         // If an error occurs, roll back the transaction
         await t.rollback();
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
 });
-
 
 
 module.exports = router;

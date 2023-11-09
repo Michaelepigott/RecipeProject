@@ -39,6 +39,48 @@ router.get('/', async (req, res) => {
     res.status(500).json(err);
   }
 });
+// ___________________________________________________________________________________
+
+// Profile page route
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+      const userData = await User.findByPk(req.session.user_id, {
+      attributes: ['user_name'],
+      include: [{
+              model: Recipe,
+          attributes: ['id', 'name', 'instructions'],
+          include: [{
+                  model: Ingredient,
+                  as: 'ingredients',
+                  attributes: ['name'],
+                  through: {
+                      model: Join,
+                      attributes: ['quantity', 'measurement'], 
+              },
+                  required: false,
+              }],
+              as: 'recipes',
+          }],
+      });
+      
+      
+  
+          if (!userData) {
+                  return res.status(404).send('User not found');
+      }
+  
+      const user = userData.get({ plain: true });
+  
+          res.render('profile', {
+          userRecipes: user.recipes, 
+              logged_in: true,
+          });
+      } catch (err) {
+      console.error(err);
+          res.status(500).send('Server Error');
+      }
+  });
+
 
 //____________________________________________________________________________________
 
