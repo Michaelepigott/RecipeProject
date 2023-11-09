@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 //____________________________________________________________________________________
 
 // Use withAuth middleware to prevent access to route
-router.get('/newRecipe', withAuth, async (req, res) => {
+router.get('/xRecipe', withAuth, async (req, res) => {
   try {
     console.log(req.session.user_id)
     // Find the logged in user based on the session ID
@@ -56,7 +56,7 @@ router.get('/newRecipe', withAuth, async (req, res) => {
 
     const user = userData.get({ plain: true });
 console.log(user)
-    res.render('newRecipe', {
+    res.render('xRecipe', {
       ...user,
       logged_in: true
     });
@@ -68,7 +68,7 @@ console.log(user)
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/newRecipe');
+    res.redirect('/xRecipe');
     return;
   }
 

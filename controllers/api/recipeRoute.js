@@ -115,20 +115,20 @@ router.post('/create', async (req, res) => {
             instructions,
             user_id: req.session.user_id,
         }, { transaction: t });
-
+console.log(name)
         // Check if ingredient is already in or not
         for (const ingredient of ingredients) {
             let ing = await Ingredient.findOne({
                 where: { name: ingredient.name },
                 transaction: t
             });
-
+console.log(ingredient)
             if (!ing) {
                 ing = await Ingredient.create({
                     name: ingredient.name
                 }, { transaction: t });
             }
-
+console.log(name)
             await Join.create({
                 recipe_id: recipe.id,
                 ingredient_id: ing.id,
@@ -136,7 +136,7 @@ router.post('/create', async (req, res) => {
                 measurement: ingredient.measurement
             }, { transaction: t });
         }
-
+console.log(quantity)
         try {
             // Commit the transaction
             await t.commit();
