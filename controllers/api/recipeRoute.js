@@ -115,20 +115,20 @@ router.post('/create', async (req, res) => {
             instructions,
             user_id: req.session.user_id,
         }, { transaction: t });
-
+console.log(name)
         // Check if ingredient is already in or not
         for (const ingredient of ingredients) {
             let ing = await Ingredient.findOne({
                 where: { name: ingredient.name },
                 transaction: t
             });
-
+console.log(ingredient)
             if (!ing) {
                 ing = await Ingredient.create({
                     name: ingredient.name
                 }, { transaction: t });
             }
-
+console.log(name)
             await Join.create({
                 recipe_id: recipe.id,
                 ingredient_id: ing.id,
@@ -136,7 +136,7 @@ router.post('/create', async (req, res) => {
                 measurement: ingredient.measurement
             }, { transaction: t });
         }
-
+console.log(quantity)
         try {
             // Commit the transaction
             await t.commit();
@@ -273,7 +273,7 @@ router.put('/update', async (req, res) => {
     }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:name', async (req, res) => {
     // Check if the user is logged in
     if (!req.session.logged_in) {
         return res.status(401).json({ message: "Please log in to delete a recipe" });
@@ -282,13 +282,13 @@ router.delete('/:id', withAuth, async (req, res) => {
     const t = await sequelize.transaction();
 
     try {
-        // Extract the id from request parameters
-        const { id } = req.params;
+        // Extract the name from request parameters
+        const { name } = req.params;
 
-        // Find the recipe by id and user_id to ensure the user owns the recipe
+        // Find the recipe by name and user_id to ensure the user owns the recipe
         const recipe = await Recipe.findOne({
             where: {
-                id,
+                name,
                 user_id: req.session.user_id
             }
         }, { transaction: t });
@@ -309,9 +309,10 @@ router.delete('/:id', withAuth, async (req, res) => {
     } catch (error) {
         // If an error occurs, roll back the transaction
         await t.rollback();
-        res.status(500).json({ error: error.message });
+        res.status(400).json({ error: error.message });
     }
 });
+
 
 
 module.exports = router;

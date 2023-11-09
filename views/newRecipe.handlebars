@@ -1,67 +1,70 @@
 
 <section class="margins">
-    <div class="text-center mt-4">
-        <button type="button" id="submitbtn" class="btn btn-lg btn-dark">Submit</button>
-    </div>
     <div class="row">
-        <!-- Left Side (Ingredients and Title Area) -->
         <div class="col-md-4 p-2">
+            <!-- title and ingredients area -->
             <div class="box card-body bg-primary rounded shadow box1">
-                <!-- Title Input -->
-                <div class="mb-3">
-                    <input type="text" class="form-control form-control-md" style="width: 300px;" placeholder="Title" id="title">
+                <div class = "card-body bg-secondary rounded shadow">
+                     <!-- title input-->
+                    <input type="text" class="form-control" placeholder="title" id="title">
                 </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control form-control-md" style="width: 300px;" placeholder="Ingredient" id="ingredient">
-                </div>
-                <!-- Quantity and Unit Row -->
-                <div class="mb-3">
-                    <div class="input-group">
-                        <input type="text" class="form-control form-control-md" placeholder="Quantity" id="quantity">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary dropdown-toggle" aria-haspopup="true" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="unit">
-                                Unit
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="unit">
-                                <li><a class="dropdown-item" id="unit-N/A" href="#">N/A</a></li>
-        <li><a class="dropdown-item" id="unit-tbsp" href="#">tbsp</a></li>
-            <li><a class="dropdown-item" id="unit-tsp" href="#">tsp</a></li>
-                <li><a class="dropdown-item" id="unit-c" href="#">c</a></li>
-                    <li><a class="dropdown-item" id="unit-oz" href="#">oz</a></li>
-                        <li><a class="dropdown-item" id="unit-lb" href="#">lb</a></li>
-                            <li><a class="dropdown-item" id="unit-g" href="#">g</a></li>
-                                <li><a class="dropdown-item" id="unit-kg" href="#">kg</a></li>
-                                    <li><a class="dropdown-item" id="unit-ml" href="#">ml</a></li>
-                                        <li><a class="dropdown-item" id="unit-L" href="#">L</a></li>
-                            </ul>
-                        </div>
+                    <div class = "card-body bg-secondary rounded shadow">
+                    <div>  
+                         <!-- qty row -->
+                        <input type="text" class="form-control" placeholder="quantity" id="quantity">
+                        <!-- fraction/unit row -->
+                            <div class="dropdown">
+                                 <button class="btn btn-primary dropdown-toggle" aria-haspopup="true" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="unit">
+                                        Unit
+                                 </button>
+                                 <ul class="dropdown-menu" aria-labelledby="unit">
+                                         <li><a class="dropdown-item" id="unit-N/A" href="#">N/A</a></li>
+                                         <li><a class="dropdown-item" id="unit-tbsp" href="#">tbsp</a></li>
+                                         <li><a class="dropdown-item" id="unit-tsp" href="#">tsp</a></li>
+                                         <li><a class="dropdown-item" id="unit-c" href="#">c</a></li>
+                                         <li><a class="dropdown-item" id="unit-oz" href="#">oz</a></li>
+                                         <li><a class="dropdown-item" id="unit-lb" href="#">lb</a></li>
+                                         <li><a class="dropdown-item" id="unit-g" href="#">g</a></li>
+                                         <li><a class="dropdown-item" id="unit-kg" href="#">kg</a></li>
+                                         <li><a class="dropdown-item" id="unit-ml" href="#">ml</a></li>
+                                         <li><a class="dropdown-item" id="unit-L" href="#">L</a></li>
+                                 </ul>
+                            </div>
+                            <!-- ingredient area -->
+                        <input type="text" class="form-control" placeholder="Ingredient" id="ingredient">
+                        <button type="button" id="ingbutton" class="btn btn-dark">Add</button>
+
                     </div>
                 </div>
-                <!-- Ingredient Area -->
-                <div>
-                    <button type="button" id="ingbutton" class="btn btn-dark">Add</button>
-                </div>
             </div>
-            <!-- Ingredient Display Area -->
-            <div class="box card-body bg-primary rounded shadow box1 mt-3">
-                <div class="card-body bg-white">
+            <!-- ingredient display area -->
+            <div class="box p-2 card-body bg-primary rounded shadow box1">
+                <div class = 'card-body bg-white'>
                     <ul id="ingdisplay">
                         <li>Ingredients go here on submit</li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- Left Side (Instructions Area) -->
+        </div>
         <div class="col-md-8 p-2">
-            <div class="box card-body bg-primary rounded shadow box2">
-                <div class="mb-3">
-                    <textarea id="instructions" class="form-control" placeholder="Add Instructions Here" id="floatingTextarea" style="height: 70vh;"></textarea>
+             <!-- instructions area -->
+            <div class="box card-body bg-primary rounded shadow box2 ">
+                <div class = "">
+                    <textarea id="instructions" class="form-control" placeholder="Add Instructions Here" id="floatingTextarea" style="height: 70vh"></textarea>
                 </div>
             </div>
+            
         </div>
     </div>
-</section>
+    <!-- submit btn -->
+ <button type="button" id="submitbtn" class="btn-lg  btn-dark">Submit</button>
+  
+ </section>
+ 
 
-
+ <!-- Add Bootstrap JS   fyi jquery script must come before bootstrap script--> 
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> 
 <script src="./js/newRecipe.js"></script>

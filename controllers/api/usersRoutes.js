@@ -4,35 +4,23 @@ const { User } = require('../../models');
 // Sign up new user
 router.post('/', async (req, res) => {
     try {
-        // Check if user already exists
-        const existingUser = await User.findOne({
-            where: { user_name: req.body.user_name }
-        });
-
-        if (existingUser) {
-            // User already exists, send a conflict response
-            return res.status(409).json({ message: 'User already exists.' });
-        }
-
-        // If user does not exist, create a new user
+        console.log('here')
         const userData = await User.create({
             user_name: req.body.user_name,
             password: req.body.password,
         });
-
+        const user = userData.get({ plain: true });
+        console.log(user)
         req.session.save(() => {
-            req.session.user_id = userData.id;
+            req.session.user_id = user.id;
             req.session.logged_in = true;
 
-            // Redirect to the profile page
-            res.redirect('/profile');
+            res.status(200).json(user);
         });
     } catch (err) {
-        console.error(err);
-        res.status(500).json({ message: 'Internal server error.' });
+        res.status(400).json(err);
     }
 });
-
 
 // Login route for user
 router.post('/login', async (req, res) => {
@@ -47,7 +35,7 @@ router.post('/login', async (req, res) => {
         const validPassword = userData.checkPassword(req.body.password);
 
         if (!validPassword) {
-            res.status(401).json({ message: 'Incorrect username or password, please try again' });
+            res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
 
@@ -55,8 +43,7 @@ router.post('/login', async (req, res) => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            // res.status(200).json({ user: userData, message: 'You are now logged in!' });
-            res.redirect('/profile');
+            res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
 
     } catch (err) {

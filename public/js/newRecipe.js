@@ -1,97 +1,116 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Initialize DOM elements
-    const submitbtn = document.getElementById("submitbtn");
-    const ingbtn = document.getElementById("ingbutton");
-    const instinput = document.getElementById("instructions");
-    const tiinput = document.getElementById("title");
-    const inginput = document.getElementById("ingredient");
-    const qtyinput = document.getElementById("quantity");
-    const unitButton = document.getElementById("unit");
-    const ingdisplay = document.getElementById("ingdisplay");
-    const recipePostLink = '/api/recipe/create';
-    let ingredients = [];
+//puts elements into dom
+submitbtn = document.getElementById("submitbtn");
+ingbtn = document.getElementById("ingbutton");
+instinput = document.getElementById("instructions");
+tiinput = document.getElementById("title");
+inginput = document.getElementById("ingredient");
+qtyinput = document.getElementById("quantity");
+fracinput = document.getElementById("fraction");
+unitinput = document.getElementById("unit");
+ingdisplay = document.getElementById("ingdisplay");
+ingredients = [];
+const recipiePostlink = '/api/recipe/create'
 
-    // Ingredient class
-    function Ingredient(qty, unit, name) {
-        this.qty = qty;
-        this.unit = unit;
-        this.name = name;
+function ingredient(qty,unit, name, fraction){
+    this.qty = qty;
+    this.name = name;
+    this.unit = unit;
+    this.instructions = instructions;
+    this.fraction =  fraction;
+}
+
+
+function ingredientadd(){
+    let ingqty = qtyinput.value;
+    let ingunit = unitinput.value;
+    let ingname = inginput.value;
+    let ingfrac = fracinput.value;
+
+    let ing = new ingredient(ingqty, ingunit, ingname, ingfrac);
+
+    ingredients.push(ing);
+    localStorage.setItem('added-ingredients',JSON.stringify(searchHistory));
+    ingredientsdisplay()
+}
+
+
+function ingredientsdisplay(){
+    ingdisplay.innerhtml = '';
+    storedIngredients = localStorage.getItem('added-ingredients');
+    if (storedIngredients){
+        storedIngredients = JSON.parse(storedIngredients);
     }
+    storedIngredients.forEach(function (ingredient){
+        var listitem = document.createElement('li');
+        listitem.textcontent = `${ingredient.qty} ${ingredient.unit} of ${ingredient.name}`;
+        ingdisplay.appendChild(listitem);
+    })
 
-    // Add ingredient to the list and local storage
-    function ingredientAdd() {
-        let ingqty = qtyinput.value;
-        let ingunit = unitButton.textContent;
-        let ingname = inginput.value;
+}
 
-        let ing = new Ingredient(ingqty, ingunit, ingname);
-        ingredients.push(ing);
-        localStorage.setItem('added-ingredients', JSON.stringify(ingredients));
-        ingredientsDisplay();
-    }
 
-    // Display ingredients on the page
-    function ingredientsDisplay() {
-        ingdisplay.innerHTML = ''; // Clear the display
-        ingredients.forEach(function(ingredient) {
-            var listItem = document.createElement('li');
-            listItem.textContent = `${ingredient.qty} ${ingredient.unit} of ${ingredient.name}`;
-            ingdisplay.appendChild(listItem);
+function serverPacket(name, instructions, ingredients){
+    this.name = name;
+    this.instructions = instructions;
+    this.ingredients = ingredients;
+}
+
+async function postData(data) {
+    try { 
+        const response = await fetch(recipiePostlink, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data), 
         });
-    }
 
-    // Server packet data structure
-    function ServerPacket(name, instructions, ingredients) {
-        this.name = name;
-        this.instructions = instructions;
-        this.ingredients = ingredients;
-    }
+        const result = await response.json();
+        console.log("Success:", result);
+ } catch (error) {
+    console.error("Error:", error);
+ }
+} 
 
-    // Post data to the server
-    async function postData(data) {
-        try {
-            const response = await fetch(recipePostLink, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            });
+function sendToServer(){  
+     var sendTitle = tiinput.value;
+     var sendingredients = ingredients;
+     var sendinstructions = instinput;
+    
+     var sendpacket = new serverPacket(sendTitle, sendingredients, sendinstructions);
+     postData(sendpacket);
+};
 
-            const result = await response.json();
-            console.log("Success:", result);
-        } catch (error) {
-            console.error("Error:", error);
-        }
-    }
 
-    // Send packet to the server
-    function sendToServer() {
-        var sendTitle = tiinput.value;
-        var sendInstructions = instinput.value; // getting value of the textarea
 
-        var sendPacket = new ServerPacket(sendTitle, sendInstructions, ingredients);
-        postData(sendPacket);
-    }
 
-    // Event listeners for buttons
-    ingbtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        ingredientAdd();
-    });
+ingbtn.addEventListener('click',function(event){
+    event.preventDefault();
+    ingredientadd();
+})
 
-    submitbtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        sendToServer();
-    });
 
-    // Dropdown unit selection logic
-    document.querySelectorAll('.dropdown-item').forEach(item => {
-        item.addEventListener('click', function(event) {
-            event.preventDefault();
-            var selectedText = this.textContent;
-            unitButton.textContent = selectedText; // Update the button text
-        });
-    });
+submitbtn.addEventListener('click',function(event){
+    event.preventDefault();
+    sendToServer();
+})
+
+$(function () {
+    $('[data-bs-toggle="dropdown"]').dropdown();
 });
 
+$(function () {
+    // Add a click event handler to all dropdown items
+   // **Solution**: Instead of `.click(fn)` use `.on("click", fn)`. Instead of `.click()` use `.trigger("click")`.
+    $('.dropdown-item').on('click', function (event) {
+        // Prevent the default behavior of the anchor tag
+        event.preventDefault();
+
+        // Get the text of the clicked item
+        var selectedText = $(this).text();
+
+        // Update the button's text with the selected text
+        $('#unit').text(selectedText);
+       
+    });
+});

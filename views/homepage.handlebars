@@ -1,26 +1,31 @@
-<section class="margins text-center">
-<h1>Welcome to My Cookbook</h1>
-<p>Please log in to contribute to our recipe blog</p>
+<section class="margins">
+<h1>Welcome to my cookbook</h1>
+<p>please log in to contribute to our recipe blog </p>
 
-<div class="login-form-container">
-<form id="login-form" action="/api/users/login" method="post">
-<div class="mb-3">
-<label for="username" class="form-label">Username:</label>
-<input type="text" class="form-control input-small" id="username" name="username" required>
-</div>
-<div class="mb-3">
-<label for="password" class="form-label">Password:</label>
-<input type="password" class="form-control input-small" id="password" name="password" required>
-</div>
-<div id="error-message" class="alert alert-danger" style="display: none;"></div>
-<button type="submit" class="btn btn-primary">Login</button>
-</form>
+<div>
+    <h1>List of Recipes</h1>
+    {{#each recipes}}
+    <div class="card">
+        <h2>{{name}}</h2>
+        <h4>By: {{user.user_name}}</h4>
+        <h3>Ingredients</h3>
+        {{#each ingredients}}
+        <p class="ingredient">
+            {{#if join.quantity}}
+            <span class="quantity">{{join.quantity}}</span>
+            {{/if}}
+
+            {{#if join.measurement}}
+            <span class="measurement">{{join.measurement}}</span>
+            {{/if}}
+
+            <span class="name">{{name}}</span>
+        </p>
+        {{/each}}
+        <h3>Instructions:</h3>
+        <p>{{instructions}}</p>
+    </div>
+    {{/each}}
 </div>
 
-<div class="signup-button-container mt-4">
-<a href="/signup" class="btn btn-secondary">Don't have an account? Sign up here</a>
-</div>
 </section>
-
-<!-- Add any additional scripts for homepage below -->
-<script src="/js/homepage.js"></script>
