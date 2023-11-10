@@ -3,22 +3,26 @@
     <div class="row">
         {{#each userRecipes}}
             <div class="col-md-4 mb-3 d-flex align-items-stretch"> 
-                <div class="card w-100"> 
-                    <div class="card-body">
+                <div class="card w-100 bg-light"> 
+                    <div class="card-header">
                         <h5 class="card-title">{{this.name}}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Ingredients</h6>
+                        <button class="btn btn-danger btn-sm float-end ms-1" onclick="requestDeleteRecipe(this)" data-id="{{this.id}}">
+                            <i class="bi bi-trash-fill"></i>
+                        </button>
+                        <button class="btn btn-primary btn-sm float-end" onclick="updateRecipe({{this.id}})">
+                            <i class="bi bi-pencil-fill"></i>
+                        </button>
+                    </div>
+                    <div class="card-body scrollable-card bg-light ">
+                        
+                        <h3 class="card-subtitle mb-2 text-muted">Ingredients</h3>
                         <ul>
                             {{#each this.ingredients}}
                                 <li>{{this.name}} ({{this.join.quantity}} {{this.join.measurement}})</li>
                             {{/each}}
                         </ul>
+                        <h3 class="card-subtitle mb-2 text-muted">Instructions</h3>
                         <p class="card-text">{{this.instructions}}</p>
-                        <button class="btn btn-danger btn-sm" onclick="requestDeleteRecipe(this)" data-id="{{this.id}}">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                        <button class="btn btn-primary btn-sm" onclick="updateRecipe({{this.id}})">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
                     </div>
                 </div>
             </div>

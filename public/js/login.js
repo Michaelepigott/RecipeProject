@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 console.log(response)
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/newRecipe');
+      document.location.replace('/profile');
     } else {
       const data = await response.json();
   const errorContainer = document.querySelector('#error-message');
