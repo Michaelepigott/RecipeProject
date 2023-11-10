@@ -61,10 +61,9 @@ We welcome contributions from the community! If you're interested in contributin
 Special thanks to the maintainers and contributors of this project:
 
 - [@PamWillis
-- [@CaitlynErwin](https://github.com/KDendor)
 - [@MahmoudNabil
 - [@MichealPigott
-- [@RodrigoReyes](https://github.com/RodKing96)
+
 
 ## License
 

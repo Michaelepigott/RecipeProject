@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.name = name;
     }
 
-    // Add ingredient to the list and local storage
+    // Add ingredient to the list and display
     function ingredientAdd() {
         let ingqty = qtyinput.value;
         let ingunit = unitButton.textContent;
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         this.ingredients = ingredients;
     }
 
-    // Post data to the server
+    // Post data to the server and handle response
     async function postData(data) {
         try {
             const response = await fetch(recipePostLink, {
@@ -58,22 +58,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 body: JSON.stringify(data),
             });
 
-            const result = await response.json();
-            console.log("Success:", result);
+            if (response.ok) {
+                const result = await response.json();
+                console.log("Success:", result);
+                // Redirect to the profile page if the submission is successful
+                window.location.href = '/profile'; // Modify this URL to the correct profile page route
+            } else {
+                throw new Error('Network response was not ok.');
+            }
         } catch (error) {
             console.error("Error:", error);
         }
-    }
-
-    // Send packet to the server
-    function sendToServer() {
-        var sendTitle = tiinput.value;
-        var sendInstructions = instinput.value; // getting value of the textarea
-
-
-        var sendPacket = new ServerPacket(sendTitle, sendInstructions, ingredients);
-        console.log(sendPacket);
-        postData(sendPacket);
     }
 
     // Event listeners for buttons
@@ -84,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     submitbtn.addEventListener('click', function(event) {
         event.preventDefault();
-        sendToServer();
+        postData(new ServerPacket(tiinput.value, instinput.value, ingredients));
     });
 
     // Dropdown unit selection logic
@@ -96,4 +91,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
 
