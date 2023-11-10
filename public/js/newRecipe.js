@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let ingredients = [];
 
     // Ingredient class
-    function Ingredient(qty, unit, name) {
-        this.qty = qty;
-        this.unit = unit;
+    function Ingredient(quantity, measurement, name) {
+        this.quantity = quantity;
+        this.measurement = measurement;
         this.name = name;
     }
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ingdisplay.innerHTML = ''; // Clear the display
         ingredients.forEach(function(ingredient) {
             var listItem = document.createElement('li');
-            listItem.textContent = `${ingredient.qty} ${ingredient.unit} of ${ingredient.name}`;
+            listItem.textContent = `${ingredient.quantity} ${ingredient.measurement} of ${ingredient.name}`;
             ingdisplay.appendChild(listItem);
         });
     }
@@ -70,7 +70,9 @@ document.addEventListener('DOMContentLoaded', function() {
         var sendTitle = tiinput.value;
         var sendInstructions = instinput.value; // getting value of the textarea
 
+
         var sendPacket = new ServerPacket(sendTitle, sendInstructions, ingredients);
+        console.log(sendPacket);
         postData(sendPacket);
     }
 
