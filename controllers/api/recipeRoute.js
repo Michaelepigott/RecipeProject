@@ -55,10 +55,19 @@ router.get('/search', async (req, res) => {
         });
         const recipes = result.map(recipe => recipe.get({ plain: true }));
         if (recipes.length === 0) {
-            return res.status(404).json({ message: 'No recipes found.' });
+            // return res.status(404).json({ message: 'No recipes found.' });
+            return res.render('searchResults', { 
+                message: 'No recipes found for your search.',
+                logged_in: req.session.logged_in,
+                onSearchPage: true
+            });
         }
         console.log(recipes);
-        res.render('searchResults', { recipes });
+        res.render('searchResults', { 
+            recipes: recipes, 
+            logged_in: req.session.logged_in,
+            onSearchPage: true 
+        });
         // res.json(recipes);
     } catch (err) {
         console.error(err); 

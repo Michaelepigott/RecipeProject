@@ -1,24 +1,35 @@
 <div class="container mt-4">
     <h2>Search Results</h2>
-    <div class="row">
-        {{#each recipes}}
-            <div class="col-md-4 mb-3 d-flex align-items-stretch"> 
-                <div class="card w-100 bg-light"> 
-                    <div class="card-header">
-                        <h5 class="card-title">{{this.name}}</h5>
-                    </div>
-                    <div class="card-body scrollable-card bg-light">
-                        <h6 class="card-subtitle mb-2 text-muted">Ingredients</h6>
-                        <ul>
-                            {{#each this.ingredients}}
-                                <li>{{this.name}} ({{this.join.quantity}} {{this.join.measurement}})</li>
-                            {{/each}}
-                        </ul>
-                        <h6 class="card-subtitle mb-2 text-muted">Instructions</h6>
-                        <p class="card-text">{{this.instructions}}</p>
+    {{#if recipes.length}}
+        <!-- Display recipes if available -->
+        <div class="row">
+            {{#each recipes}}
+                <div class="col-md-4 mb-3 d-flex align-items-stretch"> 
+                    <div class="card w-100 bg-light"> 
+                        <div class="card-header">
+                            <h5 class="card-title">{{this.name}}</h5>
+                        </div>
+                        <div class="card-body scrollable-card bg-light">
+                            <h6 class="card-subtitle mb-2 text-muted">Ingredients</h6>
+                            <ul>
+                                {{#each this.ingredients}}
+                                    <li>{{this.name}} ({{this.join.quantity}} {{this.join.measurement}})</li>
+                                {{/each}}
+                            </ul>
+                            <h6 class="card-subtitle mb-2 text-muted">Instructions</h6>
+                            <p class="card-text">{{this.instructions}}</p>
+                        </div>
                     </div>
                 </div>
+            {{/each}}
+        </div>
+    {{else}}
+        <!-- Display message if no recipes are found -->
+        {{#if message}}
+            <div class="alert alert-info" role="alert">
+                {{message}}
             </div>
-        {{/each}}
-    </div>
+        {{/if}}
+    {{/if}}
 </div>
+

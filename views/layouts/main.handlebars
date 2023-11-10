@@ -28,15 +28,21 @@
                         <button class="btn btn-secondary rounded-pill px-3" type="button">New</button>
                     </a>
                     {{#unless logged_in}}
-                    <a href="/signUp">
-                        <button class="btn btn-danger rounded-pill px-3" type="button">Sign Up</button>
-                    </a>
+                        <!-- Display Login only on searchResults page -->
+                        {{#if onSearchPage}}
+                            <a href="/login">
+                                <button class="btn btn-primary rounded-pill px-3" type="button">Login</button>
+                            </a>
+                        {{/if}}
+                        <a href="/signUp">
+                            <button class="btn btn-danger rounded-pill px-3" type="button">Sign Up</button>
+                        </a>
                     {{else}}
-                    <!-- Profile Button for logged-in users -->
-                    <a href="/profile">
-                        <button class="btn btn-success rounded-pill px-3" type="button">My Recipes</button>
-                    </a>
-                    <button class="btn btn-info rounded-pill px-3" id="logout" type="button">Log Out</button>
+                        <!-- Profile Button for logged-in users -->
+                        <a href="/profile">
+                            <button class="btn btn-success rounded-pill px-3" type="button">My Recipes</button>
+                        </a>
+                        <button class="btn btn-info rounded-pill px-3" id="logout" type="button">Log Out</button>
                     {{/unless}}
                 </div>
 
@@ -63,4 +69,5 @@
 
 </body>
 </html>
+
 
