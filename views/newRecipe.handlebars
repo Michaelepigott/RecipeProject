@@ -3,7 +3,7 @@
     <div class="text-center mt-4">
         <button type="button" id="submitbtn" class="btn btn-lg btn-dark">Submit</button>
     </div>
-    <div class="row">
+    <div class="row item">
         <!-- Left Side (Ingredients and Title Area) -->
         <div class="col-md-4 p-2">
             <div class="box card-body bg-light rounded shadow box1">
@@ -16,7 +16,7 @@
                 </div>
                 <!-- Quantity and Unit Row -->
                 <div class="mb-3">
-                    <div class="input-group">
+                    <div class="input-group item">
                         <input type="text" class="form-control form-control-md" placeholder="Quantity" id="quantity">
                         <div class="input-group-append">
                             <button class="btn btn-primary dropdown-toggle" aria-haspopup="true" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="unit">
@@ -44,8 +44,8 @@
             </div>
             <!-- Ingredient Display Area -->
             <div class="box card-body bg-primary rounded shadow box1 mt-3">
-                <div class="card-body bg-white">
-                    <ul id="ingdisplay">
+                <div class="card-body bg-white item">
+                    <ul id="ingdisplay" class="item">
                         <li>Ingredients go here on submit</li>
                     </ul>
                 </div>
@@ -54,9 +54,9 @@
 
         <!-- Left Side (Instructions Area) -->
         <div class="col-md-8 p-2">
-            <div class="box card-body bg-primary rounded shadow box2">
+            <div class="box card-body bg-primary rounded shadow box2 item">
                 <div class="mb-3">
-                    <textarea id="instructions" class="form-control" placeholder="Add Instructions Here" id="floatingTextarea" style="height: 70vh;"></textarea>
+                    <textarea id="instructions" class="form-control item" placeholder="Add Instructions Here" id="floatingTextarea" style="height: 70vh;"></textarea>
                 </div>
             </div>
         </div>
