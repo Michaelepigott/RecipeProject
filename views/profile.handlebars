@@ -3,7 +3,7 @@
     <div class="row">
         {{#each userRecipes}}
             <div class="col-md-4 mb-3 d-flex align-items-stretch item"> 
-                <div class="card w-100 bg-light item"> 
+                <div class="card w-100 bg-light shadow-lg item"> 
                     <div class="card-header">
                         <h5 class="card-title">{{this.name}}</h5>
                         <button class="btn btn-danger btn-sm float-end ms-1" onclick="requestDeleteRecipe(this)" data-id="{{this.id}}">
