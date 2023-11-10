@@ -32,3 +32,11 @@
   max-height: 400px; /* Adjust to your preference */
   overflow-y: auto;
 }
+
+.cover-background {
+  background-image: url('../css/6124bc62f54fd325b2177042_ella-olsson-oPBjWBCcAEo-unsplash.jpg');
+  background-size: cover; 
+  background-position: center; 
+  height: 100vh; 
+  width: 100%;
+}

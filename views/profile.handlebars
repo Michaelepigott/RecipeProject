@@ -3,7 +3,7 @@
     <div class="row">
         {{#each userRecipes}}
             <div class="col-md-4 mb-3 d-flex align-items-stretch"> 
-                <div class="card w-100"> 
+                <div class="card w-100 bg-light"> 
                     <div class="card-header">
                         <h5 class="card-title">{{this.name}}</h5>
                         <button class="btn btn-danger btn-sm float-end ms-1" onclick="requestDeleteRecipe(this)" data-id="{{this.id}}">
@@ -13,7 +13,7 @@
                             <i class="bi bi-pencil-fill"></i>
                         </button>
                     </div>
-                    <div class="card-body scrollable-card">
+                    <div class="card-body scrollable-card bg-light ">
                         
                         <h3 class="card-subtitle mb-2 text-muted">Ingredients</h3>
                         <ul>
