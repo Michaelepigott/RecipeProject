@@ -16,10 +16,50 @@ router.get('/', async (req, res) => {
                     attributes: ['quantity', 'measurement'], 
                 },
                 as: 'ingredients',
-                attributes: ['user_name'] 
+                attributes: ['name'] 
             }]
         });
         res.json(recipes);
+    } catch (err) {
+        console.error(err); 
+        res.status(500).json({
+            error: err.message,
+            stack: err.stack,
+        });
+    }
+});
+// serach for recipe with any name that is 
+router.get('/search', async (req, res) => {
+    try {
+        const query = req.query.query; 
+        
+        if (!query) {
+            return res.status(400).json({ message: 'Please provide a search term.' });
+        }
+
+        const result = await Recipe.findAll({
+            where: {
+                name: {
+                    [Op.like]: `%${query}%` 
+                }
+            },
+            include: [{
+                model: Ingredient,
+                through: {
+                    model: Join,
+                    attributes: ['quantity', 'measurement'], 
+                },
+                as: 'ingredients',
+                attributes: ['name'] 
+            }]
+        });
+        const recipes = result.map(recipe => recipe.get({ plain: true }));
+        if (recipes.length === 0) {
+            return res.status(404).json({ message: 'No recipes found.' });
+        }
+        console.log(recipes);
+        res.render('searchResults', { recipes });
+        // res.json(recipes);
     } catch (err) {
         console.error(err); 
         res.status(500).json({
@@ -55,47 +95,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// serach for recipe with any name that is 
-router.get('/search', async (req, res) => {
-    try {
-        const query = req.query.query; 
-        
-        // Check if query is not empty or null
-        if (!query) {
-            return res.status(400).json({ message: 'Please provide a search query.' });
-        }
 
-        const recipes = await Recipe.findAll({
-            include: [{
-                model: Ingredient,
-                as: 'ingredients',
-                attributes: ['id', 'name'],
-                through: {
-                    model: Join,
-                    attributes: ['quantity', 'measurement'],
-                }
-            }],
-            // help to find all recipes that contain the letters used in search
-            where: {
-                name: {
-                    [Op.like]: `%${query}%`
-                }
-            }
-        });
-        
-        // Check if the search returned any recipes
-        if (recipes.length === 0) {
-            // No recipes found
-            return res.status(404).json({ message: 'No recipes found.' });
-        }
-        
-        // Recipes found
-        res.json(recipes);
-    } catch (err) {
-        console.error('Search error:', err);
-        res.status(500).json(err);
-    }
-});
 
 router.post('/create', async (req, res) => {
     // Check if the user is logged in

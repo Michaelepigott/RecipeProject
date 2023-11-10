@@ -27,3 +27,8 @@
   display: block; 
   margin: 0 auto; 
 }
+
+.scrollable-card {
+  max-height: 400px; /* Adjust to your preference */
+  overflow-y: auto;
+}
