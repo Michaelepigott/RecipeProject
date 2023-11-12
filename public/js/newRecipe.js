@@ -23,11 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let ingqty = qtyinput.value;
         let ingunit = unitButton.textContent;
         let ingname = inginput.value;
-
-        let ing = new Ingredient(ingqty, ingunit, ingname);
-        ingredients.push(ing);
-        localStorage.setItem('added-ingredients', JSON.stringify(ingredients));
-        ingredientsDisplay();
+        if(isNaN(ingqty) === false && ingunit !== 'unit' && ingname !==''){
+            let ing = new Ingredient(ingqty, ingunit, ingname);
+            ingredients.push(ing);
+            localStorage.setItem('added-ingredients', JSON.stringify(ingredients));
+            ingredientsDisplay();
+        } else{
+            window.alert("Please fill out All feilds and ensure that the the quantity feild includes only the quantity.  Convert any fractions into decimals as well.");
+        }
     }
 
     // Display ingredients on the page
