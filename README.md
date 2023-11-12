@@ -1,75 +1,46 @@
-# RecipeProject
 
+## <span style="color: Yellow; font-size: 2.75rem;">RecipeProject</span>  
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-Welcome to Recipe Blog, Our app will create a blog to save recipes and share with other members. We will use Axious for fetching the API. This API (either Rapid or someother) will be used to convert measurements from imperial to metric as needed. User will need to login in order to view, previous entries from others and to enter new recipes. 
+# Description
+    - We created this to explore the inner working of back-end development and how it could solve the problem of storing recipes on a server.
+    - This app gives a solution to the piles of cookbooks we have laying around. The fact that we only use 1 or 2 recipes from each creates a huge storage problem. Grandma's recipe cards are pretty old, yellowed and covered in stains. Let's put them all in one place.
+    - We can also search and be inspired by other users. With the ability to search for recipes by one word in a Recipe title.
+    - This project has created a bases for understanding Model, View, and Controller and how they work together. There are a lot of moving parts to consider.  
 
-## Table of Contents
+## &nbsp;&nbsp;&nbsp;  Installation  
+    Download repository, enter "npm i", run mysql and enter source schema.sql; once entered quit out of it and enter "nodemon server.js" Once it says listening you can view thru your browser by entering https://127.0.0.1:3006.
 
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [Features](#features)
+    Deployment is listed below.
+
+## &nbsp;&nbsp;&nbsp;  Usage  
+    First create an account and then login. Once entered You can add recipes by clicking on the new recipe button. If you want to search recipes with a particular item in it you can enter the particular word for example chicken, it will give you yours and anyone elses that has chicken in the title. You are allowed to delete your own recipes as needed. Log Out when completed.
+
+## &nbsp;&nbsp;&nbsp;  Contributing  
+    Major writers: Mahoud Nabil, Pam Willis and Michael Pigott.
+    Assistance has been given from Carl Vega - TA, Juan Delgado - Tutor, AskBCs, and Chat GPT.
+    Login and Logout code can be referenced from Module 14 mini project.
+ 
+    
+
+# Table of Contents
+- [Installation](#installation)
 - [Usage](#usage)
-- [APIs Used](#apis-used)
-- [Contributing](#contributing)
 - [License](#license)
+- [Contributing](#contributing)
+- [Tests](#tests)
+- [Questions](#questions)
+## Deployment
 
-## Introduction
+ This can be viewed by:  
+[Click here](https:// /)
 
-Recipe Blog is a user-friendly blog 
+# License
+The MIT License  https://opensource.org/licenses/MIT
 
-## Technologies
-
-The application uses the following technologies:
-
-- HTML
-- CSS (Foundation CSS framework and custom styles)
-- JavaScript
-- 
-
-External Libraries:
-- [Boxicons](https://boxicons.com/)
-- [Remixicon](https://remixicon.com/)
-- [Google Fonts](https://fonts.google.com/)
-
-## Features
-
-- 
-
-## Usage
-
-1. Clone the repository: `git clone <git@github.com:Michaelepigott/RecipeProject.git>`
-2. Open the `index.html` file in your preferred web browser.
-
-The application's intuitive user interface allows you to seamlessly navigate between the different sections and access the features you need.
-
-## APIs Used
-
-- 
-
-## Contributing
-
-We welcome contributions from the community! If you're interested in contributing to Recipe Blog, please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch for your feature: `git checkout -b feature/your-feature-name`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin feature/your-feature-name`
-5. Open a pull request.
-
-## Contributors
-
-Special thanks to the maintainers and contributors of this project:
-
-- [@PamWillis
-- [@MahmoudNabil
-- [@MichealPigott
-
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Feel free to reach out to the project maintainers via the "About Us" tab for any questions, feedback, or collaboration.
-
+# Questions
+please contact me with any questions:  
+GitHub: https://github.com/MichaelPigott  
+Email: Mahmoudmuhamednabil@gmail.com (Mahoud Nabil)  
+Email: pwillisop@yahoo.com (Pam Willis)  
+Email: michaelepigott@gmail.com (Michael Pigott)
