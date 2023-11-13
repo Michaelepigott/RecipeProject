@@ -56,12 +56,28 @@
         <div class="col-md-8 p-2">
             <div class="box card-body bg-primary rounded shadow box2 item">
                 <div class="mb-3">
-                    <textarea id="instructions" class="form-control item" placeholder="Add Instructions Here" id="floatingTextarea" style="height: 70vh;"></textarea>
+                    <textarea id="instructions" class="form-control item" placeholder="Add Instructions Here"  style="height: 70vh;"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalLabel">Attention</h5>
+                    <button type="button" id="close-button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="modal-text">
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 
 
 <script src="./js/newRecipe.js"></script>
