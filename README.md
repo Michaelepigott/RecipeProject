@@ -16,6 +16,12 @@
 ## &nbsp;&nbsp;&nbsp;  Usage  
     First create an account and then login. Once entered You can add recipes by clicking on the new recipe button. If you want to search recipes with a particular item in it you can enter the particular word for example chicken, it will give you yours and anyone elses that has chicken in the title. You are allowed to delete your own recipes as needed. Log Out when completed.
 
+images to show usage:  
+![MockUp](images//Welcome.png)
+![MockUp](images/enterrecipe.png)
+![MockUp](images/view_myfiles.png)
+![MockUp](images/searchresult.png)
+
 ## &nbsp;&nbsp;&nbsp;  Contributing  
     Major writers: Mahoud Nabil, Pam Willis and Michael Pigott.
     Assistance has been given from Carl Vega - TA, Juan Delgado - Tutor, AskBCs, and Chat GPT.
@@ -33,7 +39,7 @@
 ## Deployment
 
  This can be viewed by:  
-[Click here](https:// /)
+[Click here](https://https://thawing-sea-00451-374dc9c94032.herokuapp.com/)
 
 # License
 The MIT License  https://opensource.org/licenses/MIT
