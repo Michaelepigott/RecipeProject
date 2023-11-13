@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const qtyinput = document.getElementById("quantity");
     const unitButton = document.getElementById("unit");
     const ingdisplay = document.getElementById("ingdisplay");
+    const closeBtn = document.getElementById("close-button");
     const recipePostLink = '/api/recipe/create';
     let ingredients = [];
+
+
 
     // Ingredient class
     function Ingredient(quantity, measurement, name) {
@@ -23,15 +26,53 @@ document.addEventListener('DOMContentLoaded', function() {
         let ingqty = qtyinput.value;
         let ingunit = unitButton.textContent;
         let ingname = inginput.value;
-        if(isNaN(ingqty) === false && ingunit !== 'unit' && ingname !==''){
+    
+        // Validation checks
+        let errors = [];
+        if (ingqty === '' || isNaN(ingqty) || ingqty <= 0) {
+            errors.push("Enter a valid quantity as a number (use decimals for fractions).");
+        }
+        if (ingunit === 'unit') {
+            errors.push("Please select a unit of measurement.");
+        }
+        if (ingname === '') {
+            errors.push("Please enter the ingredient name.");
+        }
+    
+        // If there are errors, show them in a modal, else add the ingredient
+        if (errors.length > 0) {
+            document.getElementById('modal-text').innerText = "Please correct the following:\n- " + errors.join("\n- ");
+            openModal();
+        } else {
             let ing = new Ingredient(ingqty, ingunit, ingname);
             ingredients.push(ing);
             localStorage.setItem('added-ingredients', JSON.stringify(ingredients));
             ingredientsDisplay();
-        } else{
-            window.alert("Please fill out All feilds and ensure that the the quantity feild includes only the quantity.  Convert any fractions into decimals as well.");
         }
     }
+    
+    function openModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('modal'));
+        myModal.show();
+    }
+    
+    function closeModal() {
+        var myModal = new bootstrap.Modal(document.getElementById('modal'));
+        myModal.hide();
+    }
+    
+    // Add event listener for closing the modal
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        let modal = document.getElementById('modal');
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+    
+    
 
     // Display ingredients on the page
     function ingredientsDisplay() {
@@ -65,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const result = await response.json();
                 console.log("Success:", result);
                 // Redirect to the profile page if the submission is successful
-                window.location.href = '/profile'; // Modify this URL to the correct profile page route
+                window.location.href = '/profile'; 
             } else {
                 throw new Error('Network response was not ok.');
             }
@@ -82,17 +123,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     submitbtn.addEventListener('click', function(event) {
         event.preventDefault();
-        postData(new ServerPacket(tiinput.value, instinput.value, ingredients));
+        if (validateForm()) {
+            postData(new ServerPacket(tiinput.value, instinput.value, ingredients));
+        } else {
+            // Show error message in the modal
+            showModal("Please fill in all required fields.");
+        }
     });
+
+    function validateForm() {
+        // Check if title, instructions, and ingredients are provided
+        if (tiinput.value.trim() === '' || instinput.value.trim() === '' || ingredients.length === 0) {
+            return false; // Form is invalid
+        }
+        return true;
+    }
+
+    function showModal(message) {
+        document.getElementById('modal-text').innerText = message;
+        var myModal = new bootstrap.Modal(document.getElementById('modal'));
+        myModal.show();
+    }
 
     // Dropdown unit selection logic
     document.querySelectorAll('.dropdown-item').forEach(item => {
         item.addEventListener('click', function(event) {
             event.preventDefault();
             var selectedText = this.textContent;
-            unitButton.textContent = selectedText; // Update the button text
+            unitButton.textContent = selectedText; 
         });
     });
+    qtyinput.addEventListener('input', function() {
+        this.value = this.value.replace(/[^0-9\.]/g, ''); 
+    });
+
+    qtyinput.addEventListener('keypress', function(e) {
+        if (!/^[0-9]*\.?[0-9]*$/.test(this.value + e.key)) {
+            e.preventDefault();
+        }
+        });
 });
 
 

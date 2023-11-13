@@ -23,7 +23,7 @@ images to show usage:
 ![MockUp](images/searchresult.png)
 
 ## &nbsp;&nbsp;&nbsp;  Contributing  
-    Major writers: Mahoud Nabil, Pam Willis and Michael Pigott.
+    Major writers: Mahmoud Abdelgawad, Pam Willis and Michael Pigott.
     Assistance has been given from Carl Vega - TA, Juan Delgado - Tutor, AskBCs, and Chat GPT.
     Login and Logout code can be referenced from Module 14 mini project.
  
@@ -47,6 +47,6 @@ The MIT License  https://opensource.org/licenses/MIT
 # Questions
 please contact me with any questions:  
 GitHub: https://github.com/MichaelPigott  
-Email: Mahmoudmuhamednabil@gmail.com (Mahoud Nabil)  
+Email: Mahmoudmuhamednabil@gmail.com (Mahmoud Abdelgawad)  
 Email: pwillisop@yahoo.com (Pam Willis)  
 Email: michaelepigott@gmail.com (Michael Pigott)
